@@ -37,7 +37,7 @@ $config = [
         ],
         'jwt' => [
             'class' => \sizeg\jwt\Jwt::class,
-            'key' => env(''),
+            'key' => env('JWT_SECRET'),
         ],
         'formatter' => [
             'dateFormat' => 'yyyy-MM-dd',
