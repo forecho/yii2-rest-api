@@ -24,7 +24,7 @@ $config = [
                 'application/json' => 'yii\web\JsonParser',
             ],
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => '3A64zCWZrpUOMlv8JA2eFGR1134bd6Eayr',
+            'cookieValidationKey' => env('COOKIE_VALIDATION_KEY')
         ],
         'response' => [
             'class' => 'yii\web\Response',
