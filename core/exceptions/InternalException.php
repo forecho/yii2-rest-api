@@ -4,7 +4,7 @@ namespace app\core\exceptions;
 
 use yii\web\HttpException;
 
-class InvalidArgumentException extends HttpException
+class InternalException extends HttpException
 {
     /**
      * Constructor.
@@ -14,10 +14,10 @@ class InvalidArgumentException extends HttpException
      */
     public function __construct(
         $message = null,
-        $code = ErrorCodes::INVALID_ARGUMENT_ERROR,
+        $code = ErrorCodes::INTERNAL_ERROR,
         \Exception $previous = null
     ) {
-        $message = $message ?: t('exception', ErrorCodes::INVALID_ARGUMENT_ERROR);
+        $message = $message ?: t('exception', ErrorCodes::INTERNAL_ERROR);
         parent::__construct(200, $message, $code, $previous);
     }
 }

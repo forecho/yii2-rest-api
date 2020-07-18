@@ -19,11 +19,12 @@
   },
   "minimum-stability": "stable",
   "require": {
-    "php": ">=7.2.*",
+    "php": ">=7.2",
     "yiisoft/yii2": "~2.0.14",
     "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
     "yiithings/yii2-dotenv": "^1.0",
-    "yiier/yii2-helpers": "^1.3"
+    "yiier/yii2-helpers": "^2.0",
+    "sizeg/yii2-jwt": "^2.0"
   },
   "require-dev": {
     "yiisoft/yii2-debug": "~2.1.0",
@@ -45,7 +46,8 @@
   },
   "autoload": {
     "files": [
-      "vendor/yiier/yii2-helpers/GlobalFunctions.php"
+      "vendor/yiier/yii2-helpers/src/GlobalFunctions.php",
+      "vendor/yiier/yii2-helpers/src/SupportFunctions.php"
     ]
   },
   "scripts": {

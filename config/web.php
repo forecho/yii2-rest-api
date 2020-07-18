@@ -1,5 +1,7 @@
 <?php
 
+use app\core\models\User;
+
 $common = require(__DIR__ . '/common.php');
 $params = require __DIR__ . '/params.php';
 
@@ -41,7 +43,7 @@ $config = [
             'currencyCode' => 'CNY',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            'identityClass' => User::class,
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [
@@ -58,6 +60,7 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                "POST <module>/join" => '<module>/user/join',
                 '<module>/<controller:\w+>/<action:\w+>/<id:\d+>' => '<module>/<controller>/<action>',
             ],
         ],

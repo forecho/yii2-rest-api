@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1b736825f2a1ffa5c1626830dbe3a701",
+    "content-hash": "744f74e916cd96c64018e9f8f0c6f779",
     "packages": [
         {
             "name": "bower-asset/inputmask",
@@ -326,6 +326,71 @@
             "time": "2020-06-29T00:56:53+00:00"
         },
         {
+            "name": "lcobucci/jwt",
+            "version": "3.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lcobucci/jwt.git",
+                "reference": "56f10808089e38623345e28af2f2d5e4eb579455"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/56f10808089e38623345e28af2f2d5e4eb579455",
+                "reference": "56f10808089e38623345e28af2f2d5e4eb579455",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "ext-openssl": "*",
+                "php": "^5.6 || ^7.0"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "~1.5",
+                "phpmd/phpmd": "~2.2",
+                "phpunit/php-invoker": "~1.1",
+                "phpunit/phpunit": "^5.7 || ^7.3",
+                "squizlabs/php_codesniffer": "~2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Lcobucci\\JWT\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Luís Otávio Cobucci Oblonczyk",
+                    "email": "lcobucci@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple library to work with JSON Web Token and JSON Web Signature",
+            "keywords": [
+                "JWS",
+                "jwt"
+            ],
+            "funding": [
+                {
+                    "url": "https://github.com/lcobucci",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/lcobucci",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2020-05-22T08:21:12+00:00"
+        },
+        {
             "name": "paragonie/random_compat",
             "version": "v9.99.99",
             "source": {
@@ -369,6 +434,50 @@
                 "random"
             ],
             "time": "2018-07-02T15:55:56+00:00"
+        },
+        {
+            "name": "sizeg/yii2-jwt",
+            "version": "v2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sizeg/yii2-jwt.git",
+                "reference": "e91679acace7816f8d7be6a88896d9225caf5333"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sizeg/yii2-jwt/zipball/e91679acace7816f8d7be6a88896d9225caf5333",
+                "reference": "e91679acace7816f8d7be6a88896d9225caf5333",
+                "shasum": ""
+            },
+            "require": {
+                "lcobucci/jwt": "~3.3.0",
+                "php": ">=5.6.0",
+                "yiisoft/yii2": "~2.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "sizeg\\jwt\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Dmitriy Demin",
+                    "email": "sizemail@gmail.com",
+                    "homepage": "https://sizeg.tk"
+                }
+            ],
+            "description": "JWT based on Icobucci",
+            "keywords": [
+                "jwt",
+                "yii 2",
+                "yii2"
+            ],
+            "time": "2019-10-23T07:44:44+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -1052,25 +1161,26 @@
         },
         {
             "name": "yiier/yii2-helpers",
-            "version": "v1.3.0",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiier/yii2-helpers.git",
-                "reference": "fff800b1f722970a00717245bf3fdcd3ddab70fb"
+                "reference": "2ce7dfb6cc104f3cf003cc6a119babaf33b4e409"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiier/yii2-helpers/zipball/fff800b1f722970a00717245bf3fdcd3ddab70fb",
-                "reference": "fff800b1f722970a00717245bf3fdcd3ddab70fb",
+                "url": "https://api.github.com/repos/yiier/yii2-helpers/zipball/2ce7dfb6cc104f3cf003cc6a119babaf33b4e409",
+                "reference": "2ce7dfb6cc104f3cf003cc6a119babaf33b4e409",
                 "shasum": ""
             },
             "require": {
+                "ext-bcmath": "*",
                 "yiisoft/yii2": "~2.0.0"
             },
             "type": "yii2-extension",
             "autoload": {
                 "psr-4": {
-                    "yiier\\helpers\\": ""
+                    "yiier\\helpers\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1089,7 +1199,7 @@
                 "helpers",
                 "yii2"
             ],
-            "time": "2019-06-16T06:53:50+00:00"
+            "time": "2020-07-17T14:15:02+00:00"
         },
         {
             "name": "yiisoft/yii2",
@@ -5047,7 +5157,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.6.0"
+        "php": ">=7.2"
     },
     "platform-dev": [],
     "plugin-api-version": "1.1.0"

@@ -8,6 +8,7 @@ use yii\base\Model;
 use yii\filters\auth\QueryParamAuth;
 use yii\filters\Cors;
 use yiier\helpers\SearchModel;
+use yiier\helpers\Setup;
 
 class ActiveController extends \yii\rest\ActiveController
 {
@@ -83,13 +84,15 @@ class ActiveController extends \yii\rest\ActiveController
     /**
      * @param Model $model
      * @param array $params
+     * @return Model
      * @throws InvalidArgumentException
      */
-    public function validate(Model $model, array $params)
+    public function validate(Model $model, array $params): Model
     {
         $model->load($params, '');;
         if (!$model->validate()) {
-            throw new InvalidArgumentException(array_values($model->firstErrors));
+            throw new InvalidArgumentException(Setup::errorMessage($model->firstErrors));
         }
+        return $model;
     }
 }
