@@ -17,7 +17,7 @@ class InvalidArgumentException extends HttpException
         $code = ErrorCodes::INVALID_ARGUMENT_ERROR,
         \Exception $previous = null
     ) {
-        $message = $message ?: t('exception', ErrorCodes::INVALID_ARGUMENT_ERROR);
+        $message = $message ?: t('app/error', ErrorCodes::INVALID_ARGUMENT_ERROR);
         parent::__construct(200, $message, $code, $previous);
     }
 }

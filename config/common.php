@@ -3,8 +3,8 @@ Yii::setAlias('@common', dirname(__DIR__) . '/common');
 Yii::setAlias('web', dirname(dirname(__DIR__)) . '/web');
 
 return [
-    'timeZone' => 'Asia/Shanghai', //time zone affect the formatter datetime format
-    'language' => 'zh-CN',
+    'timeZone' => env('APP_TIME_ZONE'),
+    'language' => env('APP_LANGUAGE'),
     'name' => env('APP_NAME'),
     'components' => [
         'cache' => [

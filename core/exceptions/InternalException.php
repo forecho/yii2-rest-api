@@ -17,7 +17,7 @@ class InternalException extends HttpException
         $code = ErrorCodes::INTERNAL_ERROR,
         \Exception $previous = null
     ) {
-        $message = $message ?: t('exception', ErrorCodes::INTERNAL_ERROR);
+        $message = $message ?: t('app/error', ErrorCodes::INTERNAL_ERROR);
         parent::__construct(200, $message, $code, $previous);
     }
 }
