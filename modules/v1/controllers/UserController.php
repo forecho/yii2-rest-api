@@ -7,8 +7,6 @@ use app\core\exceptions\InvalidArgumentException;
 use app\core\models\User;
 use app\core\requests\JoinRequest;
 use app\core\requests\LoginRequest;
-use app\core\resources\LoginResource;
-use app\core\resources\UserResource;
 use app\core\traits\ServiceTrait;
 use Yii;
 
@@ -30,9 +28,8 @@ class UserController extends ActiveController
         return $actions;
     }
 
-
     /**
-     * @return array
+     * @return User
      * @throws InternalException
      * @throws InvalidArgumentException
      */
@@ -40,15 +37,14 @@ class UserController extends ActiveController
     {
         $params = Yii::$app->request->bodyParams;
         $data = $this->validate(new JoinRequest(), $params);
+
         /** @var JoinRequest $data */
-        $user = $this->userService->createUser($data);
-        return (new UserResource())->formatter($user);
+        return $this->userService->createUser($data);
     }
 
     /**
      * @return string[]
-     * @throws InvalidArgumentException
-     * @throws \Throwable
+     * @throws InvalidArgumentException|\Throwable
      */
     public function actionLogin()
     {
@@ -56,6 +52,10 @@ class UserController extends ActiveController
         $this->validate(new LoginRequest(), $params);
         $token = $this->userService->getToken();
         $user = Yii::$app->user->identity;
-        return (new LoginResource())->formatter($user, (string)$token);
+
+        return [
+            'user' => $user,
+            'token' => (string)$token,
+        ];
     }
 }

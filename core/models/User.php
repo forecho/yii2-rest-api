@@ -7,6 +7,7 @@ use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
+use yiier\helpers\DateHelper;
 
 /**
  * This is the model class for table "{{%user}}".
@@ -153,5 +154,24 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+
+    /**
+     * @return array
+     */
+    public function fields()
+    {
+        $fields = parent::fields();
+        unset($fields['auth_key'], $fields['password_hash'], $fields['password_reset_token']);
+
+        $fields['created_at'] = function (self $model) {
+            return DateHelper::datetimeToIso8601($model->created_at);
+        };
+
+        $fields['updated_at'] = function (self $model) {
+            return DateHelper::datetimeToIso8601($model->updated_at);
+        };
+
+        return $fields;
     }
 }

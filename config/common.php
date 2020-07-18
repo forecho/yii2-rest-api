@@ -23,12 +23,12 @@ return [
         ],
         'i18n' => [
             'translations' => [
-                '*' => [
+                'app*' => [
                     'class' => 'yii\i18n\PhpMessageSource',
-                    'basePath' => '@app/core/messages', // if advanced application, set @frontend/messages
-                    'sourceLanguage' => 'en',
+                    'basePath' => '@app/core/messages',
                     'fileMap' => [
-                        //'main' => 'main.php',
+                        'app' => 'app.php',
+                        'app/error' => 'exception.php',
                     ],
                 ],
             ],

@@ -16,10 +16,15 @@ class JoinRequest extends \yii\base\Model
     public function rules()
     {
         return [
-            [['username', 'email'], 'filter', 'filter' => 'trim'],
+            [['username', 'email'], 'trim'],
             [['username', 'email'], 'required'],
 
-            ['username', 'match', 'pattern' => '/^[a-z]\w*$/i', 'message' => '{attribute}只能为数字和字母'],
+            [
+                'username',
+                'match',
+                'pattern' => '/^[a-z]\w*$/i',
+                'message' => t('app', '{attribute} can only be numbers and letters.')
+            ],
             ['username', 'unique', 'targetClass' => User::class],
             ['username', 'string', 'min' => 4, 'max' => 60],
 
