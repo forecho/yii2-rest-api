@@ -2,7 +2,6 @@
 
 namespace app\core\resources;
 
-use app\core\exceptions\InvalidArgumentException;
 use app\core\models\User;
 use app\core\types\UserStatus;
 use yiier\helpers\DateHelper;
@@ -12,7 +11,7 @@ class UserResource
     /**
      * @param User $user
      * @return array
-     * @throws InvalidArgumentException
+     * @throws \Exception
      */
     public function formatter(User $user)
     {
