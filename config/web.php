@@ -66,6 +66,7 @@ $config = [
             'rules' => [
                 "POST <module>/join" => '<module>/user/join',
                 "POST <module>/login" => '<module>/user/login',
+                "GET health-check" => 'site/health-check',
                 '<module>/<controller:\w+>/<action:\w+>/<id:\d+>' => '<module>/<controller>/<action>',
             ],
         ],

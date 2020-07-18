@@ -16,6 +16,14 @@ class SiteController extends Controller
         return 'hello yii';
     }
 
+    /**
+     * @return string
+     */
+    public function actionHealthCheck()
+    {
+        return 'OK';
+    }
+
     public function actionError()
     {
         $exception = Yii::$app->errorHandler->exception;
