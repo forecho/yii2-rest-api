@@ -11,6 +11,7 @@ abstract class BaseType
     /**
      * @param int $v
      * @return string
+     * @throws InvalidArgumentException
      */
     public static function getName(int $v): string
     {
@@ -24,6 +25,7 @@ abstract class BaseType
     /**
      * @param string $v
      * @return int
+     * @throws InvalidArgumentException
      */
     public static function toEnumValue(string $v): int
     {

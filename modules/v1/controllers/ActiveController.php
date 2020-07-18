@@ -3,9 +3,9 @@
 namespace app\modules\v1\controllers;
 
 use app\core\exceptions\InvalidArgumentException;
+use sizeg\jwt\JwtHttpBearerAuth;
 use Yii;
 use yii\base\Model;
-use yii\filters\auth\QueryParamAuth;
 use yii\filters\Cors;
 use yiier\helpers\SearchModel;
 use yiier\helpers\Setup;
@@ -45,10 +45,9 @@ class ActiveController extends \yii\rest\ActiveController
                 'Access-Control-Expose-Headers' => [],
             ]
         ];
-
         $behaviors['authenticator'] = [
-            'class' => QueryParamAuth::class,
-            'except' => array_merge($this->noAuthActions, ['options'])
+            'class' => JwtHttpBearerAuth::class,
+            'optional' => array_merge($this->noAuthActions, ['options']),
         ];
 
         return $behaviors;

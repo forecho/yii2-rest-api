@@ -35,6 +35,10 @@ $config = [
                 ])->formatResponse();
             },
         ],
+        'jwt' => [
+            'class' => \sizeg\jwt\Jwt::class,
+            'key' => env(''),
+        ],
         'formatter' => [
             'dateFormat' => 'yyyy-MM-dd',
             'datetimeFormat' => 'yyyy-MM-dd HH:mm:ss',
@@ -61,6 +65,7 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 "POST <module>/join" => '<module>/user/join',
+                "POST <module>/login" => '<module>/user/login',
                 '<module>/<controller:\w+>/<action:\w+>/<id:\d+>' => '<module>/<controller>/<action>',
             ],
         ],

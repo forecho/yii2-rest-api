@@ -20,11 +20,11 @@ class JoinRequest extends \yii\base\Model
             [['username', 'email'], 'required'],
 
             ['username', 'match', 'pattern' => '/^[a-z]\w*$/i', 'message' => '{attribute}只能为数字和字母'],
-            ['username', 'unique', 'targetClass' => User::class, 'message' => '此{attribute}已经被使用'],
+            ['username', 'unique', 'targetClass' => User::class],
             ['username', 'string', 'min' => 4, 'max' => 60],
 
             ['email', 'string', 'min' => 2, 'max' => 120],
-            ['email', 'unique', 'targetClass' => User::class, 'message' => '此{attribute}已经被使用'],
+            ['email', 'unique', 'targetClass' => User::class],
             ['email', 'email'],
 
             ['password', 'required'],

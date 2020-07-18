@@ -6,28 +6,21 @@ use app\core\exceptions\InternalException;
 use app\core\exceptions\InvalidArgumentException;
 use app\core\models\User;
 use app\core\requests\JoinRequest;
-use app\core\resources\JoinResource;
-use app\core\services\UserService;
+use app\core\requests\LoginRequest;
+use app\core\resources\LoginResource;
+use app\core\resources\UserResource;
+use app\core\traits\ServiceTrait;
 use Yii;
-use yii\base\InvalidConfigException;
 
 /**
  * User controller for the `v1` module
  */
 class UserController extends ActiveController
 {
+    use ServiceTrait;
+
     public $modelClass = User::class;
-    public $noAuthActions = ['join'];
-    /**
-     * @var UserService
-     */
-    private $userService;
-
-
-    public function init()
-    {
-        parent::init();
-    }
+    public $noAuthActions = ['join', 'login'];
 
     public function actions()
     {
@@ -42,14 +35,27 @@ class UserController extends ActiveController
      * @return array
      * @throws InternalException
      * @throws InvalidArgumentException
-     * @throws InvalidConfigException
      */
     public function actionJoin()
     {
         $params = Yii::$app->request->bodyParams;
         $data = $this->validate(new JoinRequest(), $params);
         /** @var JoinRequest $data */
-        $user = Yii::createObject(UserService::class)->createUser($data);
-        return (new JoinResource())->formatter($user);
+        $user = $this->userService->createUser($data);
+        return (new UserResource())->formatter($user);
+    }
+
+    /**
+     * @return string[]
+     * @throws InvalidArgumentException
+     * @throws \Throwable
+     */
+    public function actionLogin()
+    {
+        $params = Yii::$app->request->bodyParams;
+        $this->validate(new LoginRequest(), $params);
+        $token = $this->userService->getToken();
+        $user = Yii::$app->user->identity;
+        return (new LoginResource())->formatter($user, (string)$token);
     }
 }

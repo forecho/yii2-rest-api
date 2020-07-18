@@ -4,9 +4,9 @@ namespace app\core\models;
 
 use app\core\types\UserStatus;
 use Yii;
-use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yii\web\IdentityInterface;
 
 /**
  * This is the model class for table "{{%user}}".
@@ -25,7 +25,7 @@ use yii\db\ActiveRecord;
  * @property-write string $password
  * @property-read string $authKey
  */
-class User extends ActiveRecord implements \yii\web\IdentityInterface
+class User extends ActiveRecord implements IdentityInterface
 {
     /**
      * @inheritdoc
@@ -75,27 +75,12 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
     /**
      * @param mixed $token
      * @param null $type
-     * @return void|\yii\web\IdentityInterface
-     * @throws NotSupportedException
+     * @return void|IdentityInterface
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
-    }
-
-    /**
-     * Finds user by username
-     *
-     * @param string $username
-     * @param array $condition
-     * @return static|ActiveRecord
-     */
-    public static function findByUsername($username, $condition = [])
-    {
-        return static::find()->where(['username' => $username, 'status' => UserStatus::ACTIVE])
-            ->andWhere($condition)
-            ->limit(1)
-            ->one();
+        $userId = (string)$token->getClaim('uid');
+        return self::findIdentity($userId);
     }
 
     /**
