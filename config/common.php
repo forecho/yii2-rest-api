@@ -68,6 +68,15 @@ return [
                 ],
                 [
                     'class' => 'yiier\helpers\FileTarget',
+                    'levels' => ['info'],
+                    'categories' => ['request'],
+                    'logVars' => [],
+                    'maxFileSize' => 1024,
+                    'logFile' => '@app/runtime/logs/request/app.log',
+                    'enableDatePrefix' => true
+                ],
+                [
+                    'class' => 'yiier\helpers\FileTarget',
                     'levels' => ['warning'],
                     'categories' => ['debug'],
                     'logVars' => [],
