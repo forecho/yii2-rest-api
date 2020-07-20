@@ -58,4 +58,14 @@ class UserController extends ActiveController
             'token' => (string)$token,
         ];
     }
+
+    public function actionRefreshToken()
+    {
+        $user = Yii::$app->user->identity;
+        $token = $this->userService->getToken();
+        return [
+            'user' => $user,
+            'token' => (string)$token,
+        ];
+    }
 }

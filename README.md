@@ -87,9 +87,9 @@ You can then access the application through the following URL:
 Check out the packages
 ------------
 
-- [yiithings/yii2-doten](https://github.com/forecho/yiithings/yii2-doten)
-- [sizeg/yii2-jwt](https://github.com/forecho/sizeg/yii2-jwt)
-- [yiier/yii2-helpers](https://github.com/forecho/yiier/yii2-helpers)
+- [yiithings/yii2-doten](https://github.com/yiithings/yii2-doten)
+- [sizeg/yii2-jwt](https://github.com/sizeg/yii2-jwt)
+- [yiier/yii2-helpers](https://github.com/yiier/yii2-helpers)
 
 Use
 ------------
@@ -99,6 +99,7 @@ At this time, you have a RESTful API server running at `http://127.0.0.1:8000`. 
 * `GET /health-check`: a health check service provided for health checking purpose (needed when implementing a server cluster)
 * `POST /v1/join`: create a user
 * `POST /v1/login`: authenticates a user and generates a JWT
+* `POST /v1/refresh-token`: refresh a JWT
 
 Try the URL `http://localhost:8000/health-check` in a browser, and you should see something like `{"code":0,"data":"OK","message":"成功"}` displayed.
 
@@ -112,5 +113,9 @@ curl -X POST -H "Content-Type: application/json" -d '{"username":"demo","email":
 
 # authenticate the user via: POST /v1/login
 curl -X POST -H "Content-Type: application/json" -d '{"username": "demo", "password": "pass123"}' http://localhost:8000/v1/login
+# should return like: {"code":0,"data":{"user":{"id":4,"username":"dem211o1","avatar":"","email":"de21mo1@mail.com","status":1,"created_at":"2020-07-17T23:49:39+08:00","updated_at":"2020-07-17T23:49:39+08:00"},"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImp0aSI6IllpaS1SRVNULUFQSSJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3QiLCJqdGkiOiJZaWktUkVTVC1BUEkiLCJpYXQiOjE1OTUwNjQ5NzIsImV4cCI6MTU5NTMyNDE3MiwidXNlcm5hbWUiOiJkZW0yMTFvMSIsImlkIjo0fQ.y2NSVQe-TQ08RnXnF-o55h905G9WHo6GYHNaUWlKjDE"},"message":"成功"}
+
+# refresh a JWT
+curl -X POST -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImp0aSI6IllpaS1SRVNULUFQSSJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3QiLCJqdGkiOiJZaWktUkVTVC1BUEkiLCJpYXQiOjE1OTUwNjQ5NzIsImV4cCI6MTU5NTMyNDE3MiwidXNlcm5hbWUiOiJkZW0yMTFvMSIsImlkIjo0fQ.y2NSVQe-TQ08RnXnF-o55h905G9WHo6GYHNaUWlKjDE' http://localhost:8000/v1/refresh-token
 # should return like: {"code":0,"data":{"user":{"id":4,"username":"dem211o1","avatar":"","email":"de21mo1@mail.com","status":1,"created_at":"2020-07-17T23:49:39+08:00","updated_at":"2020-07-17T23:49:39+08:00"},"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImp0aSI6IllpaS1SRVNULUFQSSJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3QiLCJqdGkiOiJZaWktUkVTVC1BUEkiLCJpYXQiOjE1OTUwNjQ5NzIsImV4cCI6MTU5NTMyNDE3MiwidXNlcm5hbWUiOiJkZW0yMTFvMSIsImlkIjo0fQ.y2NSVQe-TQ08RnXnF-o55h905G9WHo6GYHNaUWlKjDE"},"message":"成功"}
 ```

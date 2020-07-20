@@ -80,7 +80,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        $userId = (string)$token->getClaim('uid');
+        $userId = (string)$token->getClaim('id');
         return self::findIdentity($userId);
     }
 

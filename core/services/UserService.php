@@ -50,10 +50,12 @@ class UserService
     {
         /** @var Jwt $jwt */
         $jwt = Yii::$app->jwt;
+        if (!$jwt->key) {
+            throw new InternalException(t('app', 'The JWT secret must be configured first.'));
+        }
         $signer = $jwt->getSigner('HS256');
         $key = $jwt->getKey();
         $time = time();
-
         return (string)$jwt->getBuilder()
             ->issuedBy(params('appUrl'))
             ->identifiedBy(Yii::$app->name, true)
