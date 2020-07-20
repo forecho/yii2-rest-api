@@ -13,9 +13,19 @@ use yiier\helpers\Security;
 class LoggerBehavior extends Behavior
 {
     /**
-     * @var mixed
+     * @var string
      */
-    private $delimiter = '-';
+    public static $delimiter = '-';
+
+    /**
+     * @var string
+     */
+    public static $requestIdParamName = 'X_REQUEST_ID';
+
+    /**
+     * @var string
+     */
+    public static $requestIdHeaderName = 'X-Request-ID';
 
     public function events()
     {
@@ -33,7 +43,7 @@ class LoggerBehavior extends Behavior
     {
         $response = $event->sender;
         $request = \Yii::$app->request;
-        $requestId = $request->getQueryParam('request_id');
+        $requestId = self::getRequestId();
         $code = ArrayHelper::getValue($response->data, 'code');
         $message = [
             'request_id' => $requestId,
@@ -47,32 +57,44 @@ class LoggerBehavior extends Behavior
         $code === 0 ? Yii::info($message, 'request') : Yii::error($message, 'request');
     }
 
-    /**
-     * @throws \Exception
-     */
     public function beforeAction()
     {
-        Yii::$app->request->setQueryParams(['request_id' => null]);
-        if ($requestId = ArrayHelper::getValue(Yii::$app->request->getHeaders(), 'x-request-id')) {
-            $tmp = explode($this->delimiter, $requestId);
-            if (count($tmp) < 2) {
-                $tmp = $this->genRequestId();
+        return self::getRequestId();
+    }
+
+    /**
+     * @return string
+     */
+    public static function getRequestId()
+    {
+        try {
+            $console = Yii::$app instanceof \yii\console\Application;
+            if ((!$console) &&
+                $requestId = ArrayHelper::getValue(Yii::$app->request->getHeaders(), self::$requestIdHeaderName)
+            ) {
+                $tmp = explode(self::$delimiter, $requestId);
+                if (count($tmp) < 2) {
+                    $tmp = self::genRequestId();
+                }
+                $tmp[1] = (int)$tmp[1] + 1;
+                $requestId = sprintf('%s%s%04d', $tmp[0], self::$delimiter, $tmp[1]);
+            } elseif (!$requestId = ArrayHelper::getValue(Yii::$app->params, self::$requestIdParamName)) {
+                $requestId = self::genRequestId();;
             }
-            $tmp[1] = (int)$tmp[1] + 1;
-            $requestId = sprintf('%s%s%04d', $tmp[0], $this->delimiter, $tmp[1]);
-        } else {
-            $requestId = $this->genRequestId();
+            \Yii::$app->params[self::$requestIdParamName] = $requestId;
+        } catch (\Exception $e) {
+            Yii::error($e, __FUNCTION__);
+            $requestId = null;
         }
-        return Yii::$app->request->setQueryParams(['request_id' => $requestId]);
+        return $requestId;
     }
 
     /**
      * @return string
      * @throws \Exception
      */
-    private function genRequestId()
+    private static function genRequestId()
     {
-        return sprintf('%s%s%04d', Security::generateRealUniqId(), $this->delimiter, 0);
+        return sprintf('%s%s%04d', Security::generateRealUniqId(20), self::$delimiter, 0);
     }
-
 }

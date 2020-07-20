@@ -2,6 +2,7 @@
 
 namespace app\core\services;
 
+use app\core\behaviors\LoggerBehavior;
 use app\core\exceptions\InternalException;
 use app\core\models\User;
 use app\core\requests\JoinRequest;
@@ -31,6 +32,10 @@ class UserService
                 throw new \yii\db\Exception(Setup::errorMessage($user->firstErrors));
             }
         } catch (Exception $e) {
+            Yii::error(
+                ['request_id' => LoggerBehavior::getRequestId(), $user->attributes, $user->errors, (string)$e],
+                __FUNCTION__
+            );
             throw new InternalException($e->getMessage());
         }
         return $user;
