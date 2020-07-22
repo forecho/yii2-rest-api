@@ -50,9 +50,10 @@ http://localhost/<rest-api>/web/
 
 Accessing [Use this template](https://github.com/forecho/yii2-rest-api/generate) Create a new repository from yii2-rest-api
 
-```
+```sh
 cd <rest-api>
 cp .env.example .env
+php yii generate/key # optional 
 ```
 
 You can then access the application through the following URL:
@@ -66,19 +67,27 @@ http://localhost/<rest-api>/web/
 
 Update your vendor packages
 
-    docker-compose run --rm php composer update --prefer-dist
-    
+```sh
+docker-compose run --rm php composer update --prefer-dist
+```
+
 Run the installation triggers (creating cookie validation code)
 
-    docker-compose run --rm php composer install    
-    
+```sh
+docker-compose run --rm php composer install    
+```
+
 Start the container
 
-    docker-compose up -d
-    
+```sh
+docker-compose up -d
+```
+   
 You can then access the application through the following URL:
 
-    http://127.0.0.1:8000
+```
+http://127.0.0.1:8000
+```
 
 **NOTES:** 
 - Minimum required Docker engine version `17.04` for development (see [Performance tuning for volume mounts](https://docs.docker.com/docker-for-mac/osxfs-caching/))

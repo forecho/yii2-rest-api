@@ -26,7 +26,8 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                php-versions: ['7.2', '7.3', '7.4']
+                php-versions: ['7.2']
+                # php-versions: ['7.2', '7.3', '7.4']
         steps:
             -   name: Checkout
                 uses: actions/checkout@v2
@@ -59,8 +60,8 @@ jobs:
 
             -   name: Prepare the application
                 run: |
-                    php -r "file_exists('.env') || copy('.env.example', '.env');"
-                    php yii generate/key
+                    php -r "file_exists('.env') || copy('.env.example', '.env.testing');"
+                    php yii generate/key .env.testing
                 env:
                     DB_DSN: mysql:host=127.0.0.1;port=${{ job.services.mysql.ports['3306'] }};dbname=yii2_rest_api_test
 

@@ -8,9 +8,9 @@ use yiier\helpers\Security;
 
 class GenerateController extends Controller
 {
-    public function actionKey()
+    public function actionKey(string $filename = '.env')
     {
-        $environmentFilePath = \Yii::getAlias('@app/.env');
+        $environmentFilePath = \Yii::getAlias('@app/' . $filename);
         foreach (['COOKIE_VALIDATION_KEY', 'JWT_SECRET'] as $item) {
             $escaped = preg_quote('=' . env($item), '/');
             $keyReplacementPattern = "/^{$item}{$escaped}/m";

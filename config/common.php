@@ -1,6 +1,4 @@
 <?php
-Yii::setAlias('@common', dirname(__DIR__) . '/common');
-Yii::setAlias('web', dirname(dirname(__DIR__)) . '/web');
 
 return [
     'timeZone' => env('APP_TIME_ZONE'),
