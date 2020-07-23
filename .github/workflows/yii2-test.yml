@@ -19,7 +19,7 @@ jobs:
                 env:
                     MYSQL_ALLOW_EMPTY_PASSWORD: false
                     MYSQL_ROOT_PASSWORD: root
-                    MYSQL_DATABASE: yii2_rest_api_test
+                    MYSQL_DATABASE: yii2
                 ports:
                     - 3306/tcp
                 options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
@@ -62,8 +62,6 @@ jobs:
                 run: |
                     php -r "file_exists('.env') || copy('.env.example', '.env');"
                     php yii generate/key
-                env:
-                    DB_DSN: mysql:host=127.0.0.1;port=${{ job.services.mysql.ports['3306'] }};dbname=yii2_rest_api_test
 
             -   name: Run Tests
                 run: |
