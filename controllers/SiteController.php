@@ -25,6 +25,9 @@ class SiteController extends Controller
         return 'OK';
     }
 
+    /**
+     * @return array
+     */
     public function actionError()
     {
         $exception = Yii::$app->errorHandler->exception;
