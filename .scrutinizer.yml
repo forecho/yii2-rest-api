@@ -1,15 +1,9 @@
 build:
-    environment:
-        php:
-            version: 7.2
-filter:
-    excluded_paths:
-        - ./web/*
-        - ./migrations/*,
-        - ./vendor/*
-        - ./runtime/*
-        - ./requirements.php
-
+    nodes:
+        analysis:
+            tests:
+                override:
+                    - php-scrutinizer-run
 checks:
     php:
         code_rating: true
@@ -31,5 +25,3 @@ tools:
         timeout: 600
         runs: 3
     php_analyzer: true
-    php_code_coverage:
-        enabled: true
