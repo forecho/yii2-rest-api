@@ -61,7 +61,7 @@ jobs:
                     vendor/bin/codecept build
                     php yii migrate --interactive=0
                     nohup php -S localhost:8080 > yii.log 2>&1 &
-                    vendor/bin/codecept run
+                    vendor/bin/codecept run --coverage --coverage-xml
 
             -   name: Codecov
                 run: bash <(curl -s https://codecov.io/bash) -t ${{ secrets.CODECOV_TOKEN }} || echo 'Codecov did not collect coverage reports'
