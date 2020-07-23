@@ -25,7 +25,7 @@ jobs:
             -   name: Install Composer dependencies
                 run: |
                     composer global require hirak/prestissimo
-                    composer install --no-progress --prefer-dist --optimize-autoloader
+                    composer install --no-progress --no-dev --prefer-dist
 
             -   name: Run GrumPHP
                 run: ./vendor/bin/grumphp run
