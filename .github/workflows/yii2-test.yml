@@ -25,11 +25,13 @@ jobs:
                     extensions: mbstring, intl, gd, imagick, zip, dom, mysql
                     coverage: xdebug #optional
 
+            -   name: Shutdown Ubuntu MySQL (SUDO)
+                run: sudo service mysql stop # Shutdown the Default MySQL, "sudo" is necessary, please not remove it
+
             -   name: Set up MySQL
                 uses: mirromutth/mysql-action@v1.1
                 with:
                     collation server: utf8mb4_unicode_ci
-                    mysql version: 5.7.17
                     mysql database: yii2
                     mysql root password: root
 
