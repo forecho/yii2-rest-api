@@ -27,6 +27,29 @@ class CreateUserCest
                 ],
                 'code' => ErrorCodes::INVALID_ARGUMENT_ERROR
             ],
+            [
+                'data' => [
+                    'username' => 'demo-sdsdkj',
+                    'email' => 'demo@yii.com',
+                    'password' => 'pass123',
+                ],
+                'code' => ErrorCodes::INVALID_ARGUMENT_ERROR
+            ],
+            [
+                'data' => [
+                    'username' => 'demo-sdsdkj',
+                    'email' => 'demo@yii.com',
+                    'password' => 'pass1',
+                ],
+                'code' => ErrorCodes::INVALID_ARGUMENT_ERROR
+            ],
+            [
+                'data' => [
+                    'username' => 'demo-sdsdkj',
+                    'password' => 'pass1',
+                ],
+                'code' => ErrorCodes::INVALID_ARGUMENT_ERROR
+            ],
         ];
     }
 
@@ -47,7 +70,7 @@ class CreateUserCest
     /**
      * @param ApiTester $I
      */
-    public function createUserViaAPI(ApiTester $I)
+    public function createUser(ApiTester $I)
     {
         $I->haveHttpHeader('content-type', 'application/json');
         $I->sendPOST('/join', [
