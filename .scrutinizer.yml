@@ -1,7 +1,5 @@
 build:
     environment:
-        variables:
-            COMPOSER: composer-ci.json
         php:
             version: 7.2
     nodes:
