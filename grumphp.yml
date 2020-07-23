@@ -1,0 +1,10 @@
+parameters:
+    git_dir: .
+    bin_dir: ./vendor/bin
+    tasks:
+        phpcs:
+            standard: PSR12
+            ignore_patterns:
+                - ./web/*
+                - ./migrations/*,
+                - ./vendor/*
