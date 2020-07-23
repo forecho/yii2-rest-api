@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * Inherited Methods
  * @method void wantToTest($text)
@@ -15,7 +14,8 @@
  * @method void pause()
  *
  * @SuppressWarnings(PHPMD)
-*/
+ * @codingStandardsIgnoreFile
+ */
 class ApiTester extends \Codeception\Actor
 {
     use _generated\ApiTesterActions;

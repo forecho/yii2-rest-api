@@ -1,4 +1,5 @@
 <?php
+
 /**
  * author     : forecho <caizhenghai@gmail.com>
  * createTime : 2019/5/12 4:58 PM
@@ -17,12 +18,15 @@ use yii\base\InvalidConfigException;
  */
 trait ServiceTrait
 {
+    /**
+     * @return UserService|object
+     */
     public function getUserService()
     {
         try {
             return Yii::createObject(UserService::class);
         } catch (InvalidConfigException $e) {
+            return new UserService();
         }
     }
-
 }

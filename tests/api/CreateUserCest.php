@@ -9,8 +9,13 @@ use Codeception\Util\HttpCode;
 
 class CreateUserCest
 {
+    /**
+     * @codingStandardsIgnoreStart
+     * @param ApiTester $I
+     */
     public function _before(ApiTester $I)
     {
+        // @codingStandardsIgnoreEnd
     }
 
     /**

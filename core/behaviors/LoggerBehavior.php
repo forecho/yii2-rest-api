@@ -69,7 +69,8 @@ class LoggerBehavior extends Behavior
     {
         try {
             $console = Yii::$app instanceof \yii\console\Application;
-            if ((!$console) &&
+            if (
+                (!$console) &&
                 $requestId = ArrayHelper::getValue(Yii::$app->request->getHeaders(), self::$requestIdHeaderName)
             ) {
                 $tmp = explode(self::$delimiter, $requestId);
@@ -79,7 +80,8 @@ class LoggerBehavior extends Behavior
                 $tmp[1] = (int)$tmp[1] + 1;
                 $requestId = sprintf('%s%s%04d', $tmp[0], self::$delimiter, $tmp[1]);
             } elseif (!$requestId = ArrayHelper::getValue(Yii::$app->params, self::$requestIdParamName)) {
-                $requestId = self::genRequestId();;
+                $requestId = self::genRequestId();
+                ;
             }
             \Yii::$app->params[self::$requestIdParamName] = $requestId;
         } catch (\Exception $e) {

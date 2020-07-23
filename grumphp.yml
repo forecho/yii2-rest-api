@@ -1,6 +1,4 @@
-parameters:
-    git_dir: .
-    bin_dir: ./vendor/bin
+grumphp:
     tasks:
         phpcs:
             standard: PSR12
@@ -8,3 +6,4 @@ parameters:
                 - ./web/*
                 - ./migrations/*,
                 - ./vendor/*
+                - ./requirements.php

@@ -5,10 +5,10 @@ namespace app\core\types;
 class UserStatus extends BaseType
 {
     /** @var int 激活 */
-    const ACTIVE = 1;
+    public const ACTIVE = 1;
 
     /** @var int 未激活状态 */
-    const UNACTIVATED = 0;
+    public const UNACTIVATED = 0;
 
     public static function names(): array
     {

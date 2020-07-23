@@ -1,13 +1,21 @@
 <?php
 
+namespace app\tests\api;
+
+// @codingStandardsIgnoreLine
+use ApiTester;
 use app\core\exceptions\ErrorCodes;
-use app\tests\api\CreateUserCest;
 use Codeception\Util\HttpCode;
 
 class LoginUserCest
 {
+    /**
+     * @codingStandardsIgnoreStart
+     * @param ApiTester $I
+     */
     public function _before(ApiTester $I)
     {
+        // @codingStandardsIgnoreEnd
     }
 
     /**

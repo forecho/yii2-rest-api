@@ -4,6 +4,6 @@ namespace app\core\exceptions;
 
 class ErrorCodes
 {
-    const INTERNAL_ERROR = 50000;
-    const INVALID_ARGUMENT_ERROR = 50001;
+    public const INTERNAL_ERROR = 50000;
+    public const INVALID_ARGUMENT_ERROR = 50001;
 }

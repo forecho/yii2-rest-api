@@ -1,6 +1,5 @@
 <?php
 
-
 use app\core\exceptions\ErrorCodes;
 
 return [

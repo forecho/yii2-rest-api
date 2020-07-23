@@ -12,7 +12,8 @@ use yiier\helpers\Setup;
 
 class ActiveController extends \yii\rest\ActiveController
 {
-    const MAX_PAGE_SIZE = 100;
+    protected const MAX_PAGE_SIZE = 100;
+    protected const DEFAULT_PAGE_SIZE = 20;
 
     /**
      * 不参与校验的 actions
@@ -66,17 +67,31 @@ class ActiveController extends \yii\rest\ActiveController
     public function prepareDataProvider()
     {
         $modelClass = $this->modelClass;
-        $pageSize = request('pageSize') ? (request('pageSize') < self::MAX_PAGE_SIZE ? request('pageSize') : self::MAX_PAGE_SIZE) : 20;
+
         $searchModel = new SearchModel(
             [
                 'defaultOrder' => ['id' => SORT_DESC],
                 'model' => $modelClass,
                 'scenario' => 'default',
-                'pageSize' => $pageSize
+                'pageSize' => $this->getPageSize()
             ]
         );
 
         return $searchModel->search(['SearchModel' => Yii::$app->request->queryParams]);
+    }
+
+    /**
+     * @return int
+     */
+    protected function getPageSize()
+    {
+        if ($pageSize = (int)request('pageSize')) {
+            if ($pageSize < self::MAX_PAGE_SIZE) {
+                return $pageSize;
+            }
+            return self::MAX_PAGE_SIZE;
+        }
+        return self::DEFAULT_PAGE_SIZE;
     }
 
 
@@ -88,7 +103,7 @@ class ActiveController extends \yii\rest\ActiveController
      */
     public function validate(Model $model, array $params): Model
     {
-        $model->load($params, '');;
+        $model->load($params, '');
         if (!$model->validate()) {
             throw new InvalidArgumentException(Setup::errorMessage($model->firstErrors));
         }
