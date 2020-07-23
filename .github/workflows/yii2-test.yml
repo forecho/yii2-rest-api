@@ -9,20 +9,6 @@ jobs:
     yii:
         name: Yii2 (PHP ${{ matrix.php-versions }})
         runs-on: ubuntu-latest
-        env:
-            DB_USERNAME: root
-            DB_PASSWORD: root
-            DB_CHARSET: utf8mb4
-        services:
-            mysql:
-                image: mysql:5.7
-                env:
-                    MYSQL_ALLOW_EMPTY_PASSWORD: false
-                    MYSQL_ROOT_PASSWORD: root
-                    MYSQL_DATABASE: yii2
-                ports:
-                    - 3306/tcp
-                options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
         strategy:
             fail-fast: false
             matrix:
@@ -39,10 +25,12 @@ jobs:
                     extensions: mbstring, intl, gd, imagick, zip, dom, mysql
                     coverage: xdebug #optional
 
-            -   name: Start mysql service
-                run: |
-                    sudo /etc/init.d/mysql start
-                    mysql -e 'CREATE DATABASE yii2;'
+            -   name: Set up MySQL
+                uses: mirromutth/mysql-action@v1.1
+                with:
+                    collation server: utf8mb4_unicode_ci
+                    mysql database: yii2
+                    mysql root password: root
 
             -   name: Get composer cache directory
                 id: composercache
