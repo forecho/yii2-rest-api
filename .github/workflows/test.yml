@@ -63,5 +63,5 @@ jobs:
                     nohup php -S localhost:8080 > yii.log 2>&1 &
                     vendor/bin/codecept run --coverage --coverage-xml=coverage.clover
                     wget https://scrutinizer-ci.com/ocular.phar
-                    php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+                    php ocular.phar code-coverage:upload --format=php-clover tests/_output/coverage.clover
                     # bash <(curl -s https://codecov.io/bash) -t ${{ secrets.CODECOV_TOKEN }} || echo 'Codecov did not collect coverage reports'
