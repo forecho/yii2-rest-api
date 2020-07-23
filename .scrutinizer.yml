@@ -6,7 +6,12 @@ build:
         coverage:
             tests:
                 override:
-                    -   command: vendor/bin/codecept run --coverage --coverage-xml
+                    -   command: |
+                            php -r "file_exists('.env') || copy('.env.example', '.env');"
+                            php yii generate/key
+                            vendor/bin/codecept build
+                            php yii migrate --interactive=0
+                            vendor/bin/codecept run --coverage --coverage-xml
                         coverage:
                             file: tests\_output\coverage.xml
                             format: clover
@@ -39,4 +44,5 @@ tools:
         timeout: 600
         runs: 3
     php_analyzer: true
-    php_code_coverage: false
+    php_code_coverage:
+        enabled: true
