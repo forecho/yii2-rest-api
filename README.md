@@ -13,6 +13,7 @@ The template contains the basic features including user join/login api.
 It includes all commonly used configurations that would allow you to focus on adding new
 features to your application.
 
+[![Testing](https://github.com/forecho/yii2-rest-api/workflows/Testing/badge.svg)](https://github.com/forecho/yii2-rest-api/actions)
 [![Latest Stable Version](https://poser.pugx.org/forecho/yii2-rest-api/v/stable)](https://packagist.org/packages/forecho/yii2-rest-api) 
 [![Total Downloads](https://poser.pugx.org/forecho/yii2-rest-api/downloads)](https://packagist.org/packages/forecho/yii2-rest-api) 
 [![Latest Unstable Version](https://poser.pugx.org/forecho/yii2-rest-api/v/unstable)](https://packagist.org/packages/forecho/yii2-rest-api) 
