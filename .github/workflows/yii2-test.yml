@@ -25,9 +25,6 @@ jobs:
                     extensions: mbstring, intl, gd, imagick, zip, dom, mysql
                     coverage: xdebug #optional
 
-            -   name: Shutdown Ubuntu MySQL (SUDO)
-                run: sudo service mysql stop # Shutdown the Default MySQL, "sudo" is necessary, please not remove it
-
             -   name: Set up MySQL
                 uses: mirromutth/mysql-action@v1.1
                 with:
@@ -49,7 +46,9 @@ jobs:
                     restore-keys: ${{ runner.os }}-composer-
 
             -   name: Install Composer dependencies
-                run: composer install --no-progress --prefer-dist --optimize-autoloader
+                run: |
+                    composer global require hirak/prestissimo
+                    composer install --no-progress --prefer-dist --optimize-autoloader
 
             -   name: Prepare the application
                 run: |
