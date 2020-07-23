@@ -29,7 +29,7 @@ class SiteController extends Controller
     /**
      * @return array
      */
-    public function actionError()
+    public function actionError(): array
     {
         $exception = Yii::$app->errorHandler->exception;
         if ($exception !== null) {
@@ -41,5 +41,6 @@ class SiteController extends Controller
             ], 'response_data_error');
             return ['code' => $exception->getCode(), 'message' => $exception->getMessage()];
         }
+        return [];
     }
 }

@@ -14,6 +14,9 @@ It includes all commonly used configurations that would allow you to focus on ad
 features to your application.
 
 [![Testing](https://github.com/forecho/yii2-rest-api/workflows/Testing/badge.svg)](https://github.com/forecho/yii2-rest-api/actions)
+[![Lint](https://github.com/forecho/yii2-rest-api/workflows/Lint/badge.svg)](https://github.com/forecho/yii2-rest-api/actions)
+[![Code Coverage](https://scrutinizer-ci.com/g/forecho/yii2-rest-api/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/forecho/yii2-rest-api/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/forecho/yii2-rest-api/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/forecho/yii2-rest-api/?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/forecho/yii2-rest-api/v/stable)](https://packagist.org/packages/forecho/yii2-rest-api) 
 [![Total Downloads](https://poser.pugx.org/forecho/yii2-rest-api/downloads)](https://packagist.org/packages/forecho/yii2-rest-api) 
 [![Latest Unstable Version](https://poser.pugx.org/forecho/yii2-rest-api/v/unstable)](https://packagist.org/packages/forecho/yii2-rest-api) 
@@ -38,6 +41,7 @@ You can then install this project template using the following command:
 composer create-project --prefer-dist forecho/yii2-rest-api <rest-api>
 cd <rest-api>
 cp .env.example .env
+php yii generate/key # optional 
 ~~~
 
 Now you should be able to access the application through the following URL, assuming `rest-api` is the directory
