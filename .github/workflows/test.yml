@@ -64,5 +64,4 @@ jobs:
                     vendor/bin/codecept run
 
             -   name: Codecov
-                    run: |
-                    bash <(curl -s https://codecov.io/bash) -t ${{ secrets.CODECOV_TOKEN }} || echo 'Codecov did not collect coverage reports'
+                run: bash <(curl -s https://codecov.io/bash) -t ${{ secrets.CODECOV_TOKEN }} || echo 'Codecov did not collect coverage reports'
