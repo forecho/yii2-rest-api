@@ -2,19 +2,6 @@ build:
     environment:
         php:
             version: 7.2
-    nodes:
-        coverage:
-            tests:
-                override:
-                    -   command: |
-                            php -r "file_exists('.env') || copy('.env.example', '.env');"
-                            php yii generate/key
-                            vendor/bin/codecept build
-                            php yii migrate --interactive=0
-                            vendor/bin/codecept run --coverage --coverage-xml
-                        coverage:
-                            file: tests\_output\coverage.xml
-                            format: clover
 filter:
     excluded_paths:
         - ./web/*
