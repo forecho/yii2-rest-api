@@ -29,6 +29,7 @@ jobs:
                 uses: mirromutth/mysql-action@v1.1
                 with:
                     collation server: utf8mb4_unicode_ci
+                    mysql version: 5.7.17
                     mysql database: yii2
                     mysql root password: root
 
