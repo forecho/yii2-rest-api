@@ -4,7 +4,19 @@ return [
     'timeZone' => env('APP_TIME_ZONE'),
     'language' => env('APP_LANGUAGE'),
     'name' => env('APP_NAME'),
+    'bootstrap' => ['log', 'ideHelper', \app\core\EventBootstrap::class],
     'components' => [
+        'ideHelper' => [
+            'class' => 'Mis\IdeHelper\IdeHelper',
+            'configFiles' => [
+                'config/web.php',
+                'config/common.php',
+                'config/console.php',
+            ],
+        ],
+        'requestId' => [
+            'class' => \yiier\helpers\RequestId::class,
+        ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],

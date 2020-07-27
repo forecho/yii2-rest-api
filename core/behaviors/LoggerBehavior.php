@@ -8,25 +8,9 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
 use yii\web\Controller;
 use yii\web\Response;
-use yiier\helpers\Security;
 
 class LoggerBehavior extends Behavior
 {
-    /**
-     * @var string
-     */
-    public static $delimiter = '-';
-
-    /**
-     * @var string
-     */
-    public static $requestIdParamName = 'X_REQUEST_ID';
-
-    /**
-     * @var string
-     */
-    public static $requestIdHeaderName = 'X-Request-ID';
-
     public function events()
     {
         return [
@@ -43,7 +27,7 @@ class LoggerBehavior extends Behavior
     {
         $response = $event->sender;
         $request = \Yii::$app->request;
-        $requestId = self::getRequestId();
+        $requestId = Yii::$app->requestId->id;
         $code = ArrayHelper::getValue($response->data, 'code');
         $message = [
             'request_id' => $requestId,
@@ -59,44 +43,6 @@ class LoggerBehavior extends Behavior
 
     public function beforeAction()
     {
-        return self::getRequestId();
-    }
-
-    /**
-     * @return string
-     */
-    public static function getRequestId()
-    {
-        try {
-            $console = Yii::$app instanceof \yii\console\Application;
-            if (
-                (!$console) &&
-                $requestId = ArrayHelper::getValue(Yii::$app->request->getHeaders(), self::$requestIdHeaderName)
-            ) {
-                $tmp = explode(self::$delimiter, $requestId);
-                if (count($tmp) < 2) {
-                    $tmp = self::genRequestId();
-                }
-                $tmp[1] = (int)$tmp[1] + 1;
-                $requestId = sprintf('%s%s%04d', $tmp[0], self::$delimiter, $tmp[1]);
-            } elseif (!$requestId = ArrayHelper::getValue(Yii::$app->params, self::$requestIdParamName)) {
-                $requestId = self::genRequestId();
-                ;
-            }
-            \Yii::$app->params[self::$requestIdParamName] = $requestId;
-        } catch (\Exception $e) {
-            Yii::error($e, __FUNCTION__);
-            $requestId = null;
-        }
-        return $requestId;
-    }
-
-    /**
-     * @return string
-     * @throws \Exception
-     */
-    private static function genRequestId()
-    {
-        return sprintf('%s%s%04d', Security::generateRealUniqId(20), self::$delimiter, 0);
+        return Yii::$app->requestId->id;
     }
 }

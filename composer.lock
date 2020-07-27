@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fd28642d2b7596c78eebd3126ab0af9d",
+    "content-hash": "2d3d6560950635bd039ba0eca81ed31b",
     "packages": [
         {
             "name": "bower-asset/inputmask",
@@ -32,7 +32,7 @@
             "version": "3.5.1",
             "source": {
                 "type": "git",
-                "url": "git@github.com:jquery/jquery-dist.git",
+                "url": "https://github.com/jquery/jquery-dist.git",
                 "reference": "4c0e4becb8263bb5b3e6dadc448d8e7305ef8215"
             },
             "dist": {
@@ -50,7 +50,7 @@
             "version": "v1.3.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/bestiejs/punycode.js.git",
+                "url": "git@github.com:bestiejs/punycode.js.git",
                 "reference": "38c8d3131a82567bfef18da09f7f4db68c84f8a3"
             },
             "dist": {
@@ -1161,16 +1161,16 @@
         },
         {
             "name": "yiier/yii2-helpers",
-            "version": "2.0.5",
+            "version": "v2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiier/yii2-helpers.git",
-                "reference": "e76352e35d1086cb88b39b5ccd024e06b2437fb3"
+                "reference": "3b5c8e8fed3dd3db9bffc858db0ee2aa117645ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiier/yii2-helpers/zipball/e76352e35d1086cb88b39b5ccd024e06b2437fb3",
-                "reference": "e76352e35d1086cb88b39b5ccd024e06b2437fb3",
+                "url": "https://api.github.com/repos/yiier/yii2-helpers/zipball/3b5c8e8fed3dd3db9bffc858db0ee2aa117645ca",
+                "reference": "3b5c8e8fed3dd3db9bffc858db0ee2aa117645ca",
                 "shasum": ""
             },
             "require": {
@@ -1199,7 +1199,7 @@
                 "helpers",
                 "yii2"
             ],
-            "time": "2020-07-19T09:35:00+00:00"
+            "time": "2020-07-27T03:15:07+00:00"
         },
         {
             "name": "yiisoft/yii2",
@@ -3209,6 +3209,59 @@
                 "schema"
             ],
             "time": "2020-05-27T16:41:55+00:00"
+        },
+        {
+            "name": "mis/yii2-ide-helper",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/takashiki/yii2-ide-helper.git",
+                "reference": "51b25fbad8b4be1ac056acc242b2e8c4193cf2e4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/takashiki/yii2-ide-helper/zipball/51b25fbad8b4be1ac056acc242b2e8c4193cf2e4",
+                "reference": "51b25fbad8b4be1ac056acc242b2e8c4193cf2e4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "yiisoft/yii2": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Mis\\IdeHelper\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "takashiki",
+                    "email": "857995137@qq.com"
+                }
+            ],
+            "description": "Yii2 IDE Helper, generates correct PHPDocs for all components, to improve auto-completion.",
+            "keywords": [
+                "autocomplete",
+                "codeintel",
+                "helper",
+                "ide",
+                "netbeans",
+                "phpdoc",
+                "phpstorm",
+                "sublime",
+                "yii2"
+            ],
+            "time": "2016-11-22T01:26:36+00:00"
         },
         {
             "name": "monolog/monolog",

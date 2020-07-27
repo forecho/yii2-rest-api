@@ -8,3 +8,4 @@ grumphp:
                 - ./vendor/*
                 - ./runtime/*
                 - ./requirements.php
+                - ./_ide_helper.php

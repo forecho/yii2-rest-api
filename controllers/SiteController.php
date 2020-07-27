@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace app\controllers;
 
-use app\core\behaviors\LoggerBehavior;
 use Yii;
 use yii\rest\Controller;
 
@@ -34,7 +33,7 @@ class SiteController extends Controller
         $exception = Yii::$app->errorHandler->exception;
         if ($exception !== null) {
             Yii::error([
-                'request_id' => LoggerBehavior::getRequestId(),
+                'request_id' => Yii::$app->requestId->id,
                 'exception' => $exception->getMessage(),
                 'line' => $exception->getLine(),
                 'file' => $exception->getFile(),

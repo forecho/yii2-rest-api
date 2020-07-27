@@ -8,7 +8,6 @@
 
 namespace app\commands;
 
-use app\core\behaviors\LoggerBehavior;
 use yii\console\Controller;
 use yii\console\ExitCode;
 
@@ -31,7 +30,7 @@ class HelloController extends Controller
     {
         echo $message . "\n";
 
-        \Yii::error(['request_id' => LoggerBehavior::getRequestId(), 'test_request_id']);
+        \Yii::error(['request_id' => \Yii::$app->requestId->id, 'test_request_id']);
         return ExitCode::OK;
     }
 }
