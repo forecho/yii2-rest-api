@@ -42,6 +42,7 @@ composer create-project --prefer-dist forecho/yii2-rest-api <rest-api>
 cd <rest-api>
 cp .env.example .env
 php yii generate/key # optional 
+chmod 777 -R runtime/
 ~~~
 
 Now you should be able to access the application through the following URL, assuming `rest-api` is the directory
@@ -56,9 +57,10 @@ http://localhost/<rest-api>/web/
 Accessing [Use this template](https://github.com/forecho/yii2-rest-api/generate) Create a new repository from yii2-rest-api
 
 ```sh
+git clone xxxx
 cd <rest-api>
 cp .env.example .env
-php yii generate/key # optional 
+chmod 777 -R runtime/
 ```
 
 You can then access the application through the following URL:
